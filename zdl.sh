@@ -39,9 +39,7 @@ done
 
 if [[ -z $DL_DIR ]]
 	then
-		DL_DIR="zenodo_files.txt"; 
-	else
-		DL_DIR=$DL_DIR . "/zenodo_files.txt";
+		DL_DIR=`pwd`; 
 fi
 
 # Check HTTP status
@@ -70,8 +68,7 @@ echo Found "$FILE_NO" files;
 
 while IFS= read -r line
 	do
-		echo https://zenodo.org"$line";
-		#wget https://zenodo.org/"$line";
+		wget https://zenodo.org/"$line";
 done <<<$FILES
 
 exit 0
