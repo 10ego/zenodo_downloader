@@ -18,13 +18,16 @@ The script fetches all attachment links to a Zenodo record and downloads them se
 
 ## Quickstart
 
-Download the bashfile and run it alongside a Zenodo Record ID like so:
+Clone the repository and run zdl.sh.
+
+Download all attachments given a record _(-i|--id parameter is mandatory)_:
 
 `zdl.sh -i #######`
 
-Provide a download path:
+Provide a download path _(-d|--dir parameter is optional)_:
 
 `zdl.sh -i ####### -d /home/myfolder/downloads`
 
 
-Just double check that `zdl.sh` has executable permission (`chmod +x`).
+Cloning the repository should maintain executable permission.
+If you just downloaded the script without cloning the repository, double check that `zdl.sh` has executable permission (`chmod +x`).
