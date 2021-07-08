@@ -63,6 +63,6 @@ fi
 echo Found "$FILE_NO" files;
 
 while IFS= read -r line; do
-    wget https://zenodo.org/"$line";
+    curl -OJLR https://zenodo.org/"$line";
 done <<<$FILES
 exit 0
