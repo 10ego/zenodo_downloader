@@ -27,3 +27,4 @@ Provide a download path:
 
 `zdl.sh -i ####### -d /home/myfolder/downloads`
 
+Don't forget to chmod +x the .sh file
