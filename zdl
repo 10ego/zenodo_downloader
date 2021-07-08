@@ -42,7 +42,7 @@ if [[ -z $DL_DIR ]]; then
 fi
 
 # Check HTTP status and exit if error
-HTTP_STATUS="$(curl -ILs https://zenodo.org/record/"$RECORD_ID" | head -1 | sed 's/HTTP\/.* \([0-9]*\) .*/\1/')";
+HTTP_STATUS="$(curl -ILs https://zenodo.org/record/"$RECORD_ID" | head -1 | sed -rn 's/HTTP.*([0-9]{3}).*/\1/p')";
 
 if [[ $HTTP_STATUS != 200 ]]; then
     echo Record cannot be reached;
