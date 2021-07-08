@@ -12,7 +12,6 @@ The script fetches all attachment links to a Zenodo record and downloads them se
 
 ## Requirements
 
-* grep
 * sed
 * curl
 

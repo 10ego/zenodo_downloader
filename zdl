@@ -52,7 +52,7 @@ fi
 
 # Main
 
-FILES="$(curl -X GET https://zenodo.org/record/"$RECORD_ID" | grep -o 'href=\"\/.*\/files\/.*\?download=1' | sed 's/href="//' | sort -u)";
+FILES="$(curl -Xs GET https://zenodo.org/record/"$RECORD_ID" | sed -rn 's/.*href="(\/.*\/files\/.*\?download=1).*/\1/p' | sort -u)"
 FILE_NO="$(echo -n "$FILES" | grep -c '^')";
 
 if [[ $FILE_NO -eq 0 ]]; then
