@@ -1,5 +1,5 @@
 # Zenodo attachments downloader
-__*Automate your download of all attachments to any Zenodo records**_
+__*Automate your download of all attachments to any Zenodo records*__
 
 This is a shell script tool designed for most linux distributions.
 The script fetches all attachment links to a Zenodo record and downloads them sequentially automagically. No more clicking one by one!
