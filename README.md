@@ -20,13 +20,13 @@ The script fetches all attachment links to a Zenodo record and downloads them se
 
 Clone the repository and run zdl.
 
-Download all attachments given a record _(_-i|--id _parameter is mandatory)_:
+Download all attachments given a record _(_-i | --id _parameter is mandatory)_:
 
-`zdl -i #######`
+`./zdl -i #######`
 
-Provide a download path _(_-d|--dir _parameter is optional)_:
+Provide a download path _(_-d | --dir _parameter is optional)_:
 
-`zdl -i ####### -d /home/myfolder/downloads`
+`./zdl -i ####### -d /home/myfolder/downloads`
 
 
 Cloning the repository should maintain executable permission.
