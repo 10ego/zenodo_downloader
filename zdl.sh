@@ -7,7 +7,7 @@ set -e
 # Print input info
 usage() {
     echo Downloading Record "$RECORD_ID" to "$DL_DIR"
-      }
+}
 # Report error and exit
 perror() {
     echo Error: "$1" >&2
@@ -30,26 +30,23 @@ while [[ "$#" -gt 0 ]]; do
         *) echo Unknown parameter passed: "$1";
             exit 1;
     esac;
-    if [[ -z $RECORD_ID ]]
-        then    
-            echo "Error: Record ID must be declared (-i, --id)"
-            exit 1
+    if [[ -z $RECORD_ID ]]; then    
+        echo "Error: Record ID must be declared (-i, --id)"
+        exit 1
     fi
 done
 
-if [[ -z $DL_DIR ]]
-    then
-        DL_DIR=`pwd`; 
+# If download dir is not identified, assign  pwd
+if [[ -z $DL_DIR ]]; then
+    DL_DIR=`pwd`; 
 fi
 
-# Check HTTP status
-
+# Check HTTP status and exit if error
 HTTP_STATUS="$(curl -ILs https://zenodo.org/record/"$RECORD_ID" | head -1 | sed 's/HTTP\/.* \([0-9]*\) .*/\1/')";
 
-if [[ $HTTP_STATUS != 200 ]]
-    then
-        echo Record cannot be reached;
-        echo Error \(HTTP: "$HTTP_STATUS"\);
+if [[ $HTTP_STATUS != 200 ]]; then
+    echo Record cannot be reached;
+    echo Error \(HTTP: "$HTTP_STATUS"\);
     exit 1
 fi
 
@@ -58,17 +55,14 @@ fi
 FILES="$(curl -X GET https://zenodo.org/record/"$RECORD_ID" | grep -o 'href=\"\/.*\/files\/.*\?download=1' | sed 's/href="//' | sort -u)";
 FILE_NO="$(echo -n "$FILES" | grep -c '^')";
 
-if [[ $FILE_NO -eq 0 ]]
-    then
-        echo No download links found;
+if [[ $FILE_NO -eq 0 ]]; then
+    echo No download links found;
     exit 1
 fi
 
 echo Found "$FILE_NO" files;
 
-while IFS= read -r line
-    do
-        wget https://zenodo.org/"$line";
+while IFS= read -r line; do
+    wget https://zenodo.org/"$line";
 done <<<$FILES
-
 exit 0
