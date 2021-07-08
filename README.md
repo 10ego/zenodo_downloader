@@ -26,4 +26,5 @@ Provide a download path:
 
 `zdl.sh -i ####### -d /home/myfolder/downloads`
 
-Don't forget to `chmod +x` on the .sh file
+
+Just double check that `zdl.sh` has executable permission (`chmod +x`).
